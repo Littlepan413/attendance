@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>考勤管理系统</title>
+<link rel="stylesheet" type="text/css" href="script/Script.css"/>
+<script type="text/javascript">
+  function CheckForm(){
+	  var LoginAccount = document.Register.Account.value;  
+	  var EmailAccount = document.Register.Email.value;
+	  
+	  if((LoginAccount.length >= 3 || LoginAccount.length <= 16) && EmailAccount.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1){
+		  
+		  return true;
+	  }
+	  else{
+		  alert("登陆账号长度应为3-16个字符,邮箱格式为****@**.***，请重新输入！");
+		  return false;
+	  }
+   }	    
+
+ 
+</script>
+
+</head>
+
+<body>
+<div class="wrapper">
+	<form name="Register" action="send.jsp" method="post" onsubmit="return CheckForm()" >
+	<div class="loginBox">
+		<div class="loginBoxCenter">
+			<p><label for="username">姓名：</label></p>
+			<p><input type="text" id="username" name="username" autofocus="autofocus" class="loginInput" required="required" autocomplete="off" 		
+             placeholder="请输入用户名" value="" /></p>
+			<p><label for="TeacherId">教师工号：</label></p>
+			<p><input type="text" id="TeacherId" name="TeacherId" class="loginInput" required="required" autocomplete="off" 		
+             placeholder="请输入教师工号" value="" /></p>
+            <p><label for="Account">登陆账号：</label></p>
+			<p><input type="text" id="Account" name="Account" class="loginInput" required="required" autocomplete="off" 		
+             placeholder="请输入登陆账号" value="" /></p>
+             
+            <p><label for="email">邮箱：</label></p>
+            <p><input type="email" id="Email" name="Email" class="loginInput" placeholder="请输入邮箱" value="" /></p>
+            <p><font color="#0000FF">密码将发至您的邮箱，请接收并去修改</font></p>
+		</div>
+		<div class="loginBoxButtons">
+        	<!--
+           <div align="left">密码将发至您的邮箱，请接收并去修改</div>
+            -->
+            <div align="center"><button class="loginBtn">发送申请</button></div>
+        </div>
+			
+
+	</div>
+	</form>
+</div> 
+</body>
+</html>
