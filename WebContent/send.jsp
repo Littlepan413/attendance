@@ -46,13 +46,9 @@
 			String sql = "INSERT INTO apply_info VALUES('"+teacherid+"','"+name+"','"+account+"','"+email+"',"+0+");";
 			rs = stmt.executeUpdate(sql);
 		}
-	}catch(Exception e) {System.out.println(e);  }
-%>
-<%
-	try{
 		stmt.close();
 		conn.close();
-	}catch(Exception e) {}
+	}catch(Exception e) {System.out.println(e);  }
 %>
 <%out.print("<script type=\"text/javascript\">");%>
 <%

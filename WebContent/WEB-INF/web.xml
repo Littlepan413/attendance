@@ -24,6 +24,36 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>check</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.CheckLogin
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>check</servlet-name>
+    <url-pattern>/checkLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>login_log</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.QueryLoginLogServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>login_log</servlet-name>
+    <url-pattern>/queryLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>add_class</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.CreateClassServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>add_class</servlet-name>
+    <url-pattern>/createClass</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>

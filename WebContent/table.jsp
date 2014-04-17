@@ -56,7 +56,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.jsp"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>Aki</span></a>
+				<a class="brand" href="index.jsp"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>Manage</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -87,7 +87,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="Logout.jsp">Logout</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -116,17 +116,12 @@
 						<li class="nav-header hidden-tablet">Main</li>
 						<li><a class="ajax-licon-homenk" href="index.jsp"><i class="icon-home"></i><span class="hidden-tablet"> 个人首页</span></a></li>
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-pencil"></i><span class="hidden-tablet"> 修改密码</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
+						<li class="nav-header hidden-tablet">日志查看</li>
+						<li><a class="ajax-link" href="queryLogin"><i class="icon-edit"></i><span class="hidden-tablet"> 登陆日志</span></a></li>
+						<li><a class="ajax-link" href="index.jsp"><i class="icon-list-alt"></i><span class="hidden-tablet"> 操作日志</span></a></li>
 						<li class="nav-header hidden-tablet">班级管理</li>
-						<%
-							for(int i=0;i<1;i++){
-								out.println("<li><a class=\"ajax-link\" href=\"index.jsp\"><i class=\"icon-calendar\"></i><span class=\"hidden-tablet\">第"+i+"个班级</span></a></li>");
-							}
-						%>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
+						<li><a class="ajax-link" href="table.jsp"><i class="icon-calendar"></i><span class="hidden-tablet">信号与系统</span></a></li>
+						<li><a class="ajax-link" href="addclass.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
 						<!--
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
@@ -202,22 +197,6 @@
 								<td class="center">
 									<span class="label label-success">正常</span>
 								</td>
-								<!-- 
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										View                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										Edit                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										Delete
-									</a>
-								</td>
-								 -->
 							</tr>
 						  </tbody>
 					  </table>            
@@ -235,14 +214,14 @@
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
+				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
-				<p>Here settings can be configured...</p>
+				<p>还在建设中........</p>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
+				<a href="#" class="btn" data-dismiss="modal">关闭</a>
+				<a href="#" class="btn btn-primary">保存更改</a>
 			</div>
 		</div>
 	

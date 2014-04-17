@@ -1,10 +1,11 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@page import="java.util.*" %>
+<%@page import="cn.hyit.zyy.vo.LoginLog" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>学生考勤</title>
+	<title>欢迎使用</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -43,11 +44,7 @@
 
 	<!-- The fav icon -->
 	<link rel="shortcut icon" href="img/favicon.ico">
-    <script type="text/javascript">
-    	function GetMember(){
-			var text=document.NewClass.Member.value;	
-		}
-    </script>	
+		
 </head>
 
 <body>
@@ -158,15 +155,15 @@
 						<a href="#">主页</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">创建班级</a>
+						<a href="#">登陆记录</a>
 					</li>
 				</ul>
 			</div>
 			
-			<div class="row-fluid sortable">
+			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> </h2>
+						<h2><i class="icon-user"></i> 登陆情况</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -174,20 +171,53 @@
 						</div>
 					</div>
 					<div class="box-content">
-                    	<form action="createClass" name="NewClass" method="post" >
-                        	<p>班级名称</p>
-                            <input type="text" name="classname">
-                            <p>课程名称</p>
-                            <input type="text" name="subject">
-                          	<p>学生名单</p>
-                            <textarea name="member" cols="12" rows="10" style="width:500px;"></textarea>
-                            <br>
-                            <button onClick="return GetMember()">提交</button>
-                            <button type="reset">重置</button>
-                        </form>
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>ID</th>
+								  <th>姓名</th>
+								  <th>登陆IP</th>
+								  <th>登陆时间</th>
+								  <th>登陆日期</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
+							<!--tr>
+								<td class="center">1121302135</td>
+								<td class="center">张宇洋</td>
+								<td class="center">127.0.0.1</td>
+								<td class="center">19:08:11</td>
+								<td class="center">2014-03-28</td>
+							</tr-->
+							<%
+							request.setCharacterEncoding("GBK");
+							LoginLog log =null;
+							%>
+							<%
+							List<LoginLog> alllog = (List<LoginLog>)request.getAttribute("loginlog");
+							if(alllog!=null){
+								ListIterator<LoginLog> iter = alllog.listIterator();
+								while(iter.hasNext()){
+									iter.next();
+								}
+								//先进行正向的迭代，然后倒序迭代
+								while(iter.hasPrevious()){
+									log = iter.previous();
+									out.println("<tr>");
+									out.println("<td class=\"center\">"+log.getTeacherid()+"</td>");
+									out.println("<td class=\"center\">"+session.getAttribute("uname")+"</td>");
+									out.println("<td class=\"center\">"+log.getLoginip()+"</td>");
+									out.println("<td class=\"center\">"+log.getTime().toString()+"</td>");
+									out.println("<td class=\"center\">"+log.getDate().toString()+"</td>");
+									out.println("</tr>");
+								}
+							}
+							%>
+						  </tbody>
+					  </table>            
 					</div>
 				</div><!--/span-->
-
+			
 			</div><!--/row-->
 			
 			<!-- content ends -->
@@ -199,21 +229,21 @@
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
+				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
-				<p>Here settings can be configured...</p>
+				<p>还在建设中........</p>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
+				<a href="#" class="btn" data-dismiss="modal">关闭</a>
+				<a href="#" class="btn btn-primary">保存更改</a>
 			</div>
 		</div>
 	
-<!--		<footer>
+		<footer>
 			<p class="pull-left">&copy; <a href="#" target="_blank">Muhammad Usman</a> 2014</p>
 			<p class="pull-right">Powered by: <a href="#">Akichan</a></p>
-		</footer>-->
+		</footer>
 		
 	</div><!--/.fluid-container-->
 

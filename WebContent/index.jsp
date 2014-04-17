@@ -56,7 +56,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.jsp"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>Aki</span></a>
+				<a class="brand" href="index.jsp"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>Manage</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -116,17 +116,12 @@
 						<li class="nav-header hidden-tablet">Main</li>
 						<li><a class="ajax-licon-homenk" href="index.jsp"><i class="icon-home"></i><span class="hidden-tablet"> 个人首页</span></a></li>
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-pencil"></i><span class="hidden-tablet"> 修改密码</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
+						<li class="nav-header hidden-tablet">日志查看</li>
+						<li><a class="ajax-link" href="queryLogin"><i class="icon-edit"></i><span class="hidden-tablet"> 登陆日志</span></a></li>
+						<li><a class="ajax-link" href="index.jsp"><i class="icon-list-alt"></i><span class="hidden-tablet"> 操作日志</span></a></li>
 						<li class="nav-header hidden-tablet">班级管理</li>
-						<%
-							for(int i=0;i<1;i++){
-								out.println("<li><a class=\"ajax-link\" href=\"table.jsp\"><i class=\"icon-calendar\"></i><span class=\"hidden-tablet\">第"+i+"个班级</span></a></li>");
-							}
-						%>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
+						<li><a class="ajax-link" href="table.jsp"><i class="icon-calendar"></i><span class="hidden-tablet">信号与系统</span></a></li>
+						<li><a class="ajax-link" href="addclass.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
 						<!--
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>

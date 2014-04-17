@@ -7,7 +7,7 @@
 </head>
 <body>
 <%
-	response.setHeader("refresh", "3;URL=login,html");
+	response.setHeader("refresh", "3;URL=login.html");
 	session.invalidate();
 %>
 <center>
