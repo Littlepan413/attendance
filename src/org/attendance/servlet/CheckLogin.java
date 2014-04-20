@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.hyit.zyy.dao.factory.DAOFactory;
 import cn.hyit.zyy.vo.LoginLog;
+import cn.hyit.zyy.vo.SubjectInfo;
 import cn.hyit.zyy.vo.TeacherInfo;
 
 /**
@@ -43,7 +47,7 @@ public class CheckLogin extends HttpServlet {
 		String password = request.getParameter("password");
 		Calendar cld = Calendar.getInstance();
 		int year = cld.get(Calendar.YEAR);
-		int month = cld.get(Calendar.MONTH) + 1;	//注意月份从0开始，所以此处要+1
+		int month = cld.get(Calendar.MONTH) + 1; // 注意月份从0开始，所以此处要+1
 		int day = cld.get(Calendar.DATE);
 		int hour = cld.get(Calendar.HOUR_OF_DAY);
 		int minute = cld.get(Calendar.MINUTE);
@@ -70,6 +74,7 @@ public class CheckLogin extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (teacher != null) {
+			// 记录登陆日志
 			log.setTeacherid(teacher.getTeacherid());
 			log.setLoginip(request.getRemoteAddr());
 			log.setTime(java.sql.Time.valueOf(time));
@@ -79,9 +84,29 @@ public class CheckLogin extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			// 读取教师所教授课程的列表
+			List<Integer> allSubjectid = null;
+			Iterator<Integer> iterSubid = null;
+			SubjectInfo subject = null;
+			List<String> allSubjectName = new ArrayList<>();
+			try {
+				allSubjectid = DAOFactory.getICourseInfoDAOInstance().findById(
+						teacher.getTeacherid());
+				iterSubid = allSubjectid.iterator();
+				while (iterSubid.hasNext()) {
+					subject = DAOFactory.getISubjectInfoDAOInstance().findById(
+							iterSubid.next().intValue());
+					allSubjectName.add(subject.getSubjectname());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 保存登陆人员的信息到session
 			request.getSession().setAttribute("uname", teacher.getName());
 			request.getSession().setAttribute("urank", teacher.getRank());
 			request.getSession().setAttribute("uid", teacher.getTeacherid());
+			request.getSession().setAttribute("allSubjectid", allSubjectid);
+			request.getSession().setAttribute("allSubjectName", allSubjectName);
 			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		} else {

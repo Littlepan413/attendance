@@ -33,11 +33,14 @@ public class CourseInfoDAOimpl implements ICourseInfoDAO {
 		return flag;
 	}
 
-	@Override
+	@Override 
+	/**
+	 * 返回教师id所对应的所有课程
+	 */
 	public List<Integer> findById(int teacherid) throws Exception {
 		List<Integer> all = new ArrayList<>();
 		int subjectid = 0;
-		String sql = "select subjectid from course_info where teacherid = ?";
+		String sql = "select distinct subjectid from course_info where teacherid = ?";
 		this.pstmt = this.conn.prepareStatement(sql);
 		this.pstmt.setInt(1, teacherid);
 		ResultSet rs = this.pstmt.executeQuery();
@@ -45,6 +48,7 @@ public class CourseInfoDAOimpl implements ICourseInfoDAO {
 			subjectid = rs.getInt(1);
 			all.add(subjectid);
 		}
+		this.pstmt.close();
 		return all;
 	}
 
@@ -60,6 +64,7 @@ public class CourseInfoDAOimpl implements ICourseInfoDAO {
 			course = new CourseInfo();
 			course.setGroupid(rs.getInt(1));
 		}
+		this.pstmt.close();
 		return course;
 	}
 
@@ -74,7 +79,26 @@ public class CourseInfoDAOimpl implements ICourseInfoDAO {
 		while (rs.next()) {
 			flag = true;
 		}
+		this.pstmt.close();
 		return flag;
+	}
+
+	@Override
+	public List<Integer> findAllGroup(int teacherid, int subjectid)
+			throws Exception {
+		List<Integer> all = new ArrayList<>();
+		int groupid = 0;
+		String sql = "select groupid from course_info where subjectid=? and teacherid=?";
+		this.pstmt = this.conn.prepareStatement(sql);
+		this.pstmt.setInt(1, subjectid);
+		this.pstmt.setInt(2, teacherid);
+		ResultSet rs = this.pstmt.executeQuery();
+		while(rs.next()){
+			groupid = rs.getInt(1);
+			all.add(groupid);
+		}
+		this.pstmt.close();
+		return all;
 	}
 
 }

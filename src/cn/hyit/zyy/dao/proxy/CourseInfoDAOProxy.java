@@ -67,5 +67,18 @@ public class CourseInfoDAOProxy implements ICourseInfoDAO {
 		}
 		return flag;
 	}
+	@Override
+	public List<Integer> findAllGroup(int teacherid, int subjectid)
+			throws Exception {
+		List<Integer> all = null;
+		try {
+			all = this.dao.findAllGroup(teacherid, subjectid);
+		} catch (Exception e) {
+			throw e;
+		}finally{
+			this.dbc.close();
+		}
+		return all;
+	}
 
 }

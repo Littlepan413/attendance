@@ -54,6 +54,46 @@
     <servlet-name>add_class</servlet-name>
     <url-pattern>/createClass</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>download_subject</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.DownloadSubjectServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>download_subject</servlet-name>
+    <url-pattern>/downloadSubject</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>download_group</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.DownloadGroupServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>download_group</servlet-name>
+    <url-pattern>/downloadGroup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>download_student</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.DownloadStudentServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>download_student</servlet-name>
+    <url-pattern>/downloadStudent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>query_subject</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.QueryGroupServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>query_subject</servlet-name>
+    <url-pattern>/queryGroup</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
