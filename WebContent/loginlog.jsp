@@ -47,6 +47,13 @@
 		
 </head>
 
+<script type="text/javascript">
+	function forword(id) {
+		var address = "/attendance/queryGroup?subjectid=" + id;
+		window.location.href = address;
+	}
+</script>
+
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
@@ -121,7 +128,25 @@
 						<li><a class="ajax-link" href="queryLogin"><i class="icon-edit"></i><span class="hidden-tablet"> 登陆日志</span></a></li>
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-list-alt"></i><span class="hidden-tablet"> 操作日志</span></a></li>
 						<li class="nav-header hidden-tablet">班级管理</li>
-						<li><a class="ajax-link" href="table.jsp"><i class="icon-calendar"></i><span class="hidden-tablet">信号与系统</span></a></li>
+						<%
+							List<Integer> allSubjectid = (List<Integer>) session
+									.getAttribute("allSubjectid");
+							List<String> allSubjectName = (List<String>) session
+									.getAttribute("allSubjectName");
+							if (allSubjectid != null && allSubjectName != null) {
+								Iterator<Integer> iterSubid = allSubjectid.iterator();
+								Iterator<String> iterSubName = allSubjectName.iterator();
+								while (iterSubid.hasNext() && iterSubName.hasNext()) {
+									Integer subjectid = iterSubid.next();
+									out.println("<li id=\""
+											+ subjectid.intValue()
+											+ "\"><a class=\"ajax-link\" onclick=forword("
+											+ subjectid.intValue()
+											+ ")><i class=\"icon-calendar\"></i><span class=\"hidden-tablet\">"
+											+ iterSubName.next() + "</span></a></li>");
+								}
+							}
+						%>
 						<li><a class="ajax-link" href="addclass.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
 						<!--
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>

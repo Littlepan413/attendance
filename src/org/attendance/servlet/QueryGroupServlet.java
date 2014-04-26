@@ -59,7 +59,7 @@ public class QueryGroupServlet extends HttpServlet {
 				iterGroup = oneGroup.iterator();
 				if(iterGroup.hasNext()){
 					groupName = iterGroup.next().getGroupname();
-					System.out.println(groupName);
+					//System.out.println(groupName);
 					allGroupName.add(groupName);
 				}
 			}

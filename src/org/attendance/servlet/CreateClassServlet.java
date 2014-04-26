@@ -1,6 +1,7 @@
 package org.attendance.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -52,6 +53,24 @@ public class CreateClassServlet extends HttpServlet {
 		GroupInfo group = new GroupInfo();
 		StudentInfo stuinfo = new StudentInfo();
 		boolean flag = true;
+		/**
+		 * 创建班级前，先开始向数据库中写入学生的名单，学生的名单为公用数据
+		 * 此处先录入学生名单是为了防止在创建班级时，有意外情况发生而导致班级被创建后没有相关联的学生信息
+		 */
+		for (int i = 0; i < student.length; i += 2) {
+			stuinfo.setStudentid(Integer.parseInt(student[i]));
+			stuinfo.setName(student[i + 1]);
+			stuinfo.setCardid("00:00:00:00");
+			stuinfo.setClassname("未使用");
+			try {
+				DAOFactory.getIStudentInfoDAOInstance().doCreate(stuinfo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		/**
+		 * 开始检测是否有重复班级的创建
+		 */
 		try {
 			List<GroupInfo> allgroup = DAOFactory.getIGroupInfoDAOInstance()
 					.findByName(classname);
@@ -69,9 +88,12 @@ public class CreateClassServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		/**
-		 * 在插入班级前需要检测是否有重复，修正完毕！以上检测是否有重复班级创建
+		 * 检测班级重复结束
 		 */
 		if (flag) {
+			/**
+			 * 开始班级的创建
+			 */
 			subject = new SubjectInfo();
 			subject.setSubjectname(subjectname);
 			try {
@@ -101,22 +123,32 @@ public class CreateClassServlet extends HttpServlet {
 				}
 			}
 			/**
-			 * 以下开始向数据库中写入学生的名单，学生的名单为公用数据
+			 * 班级创建结束
+			 * 重新获取教师的课程列表
 			 */
-			for (int i = 0; i < student.length; i += 2) {
-				stuinfo.setStudentid(Integer.parseInt(student[i]));
-				stuinfo.setName(student[i + 1]);
-				stuinfo.setCardid("00:00:00:00");
-				stuinfo.setClassname("未使用");
-				try {
-					DAOFactory.getIStudentInfoDAOInstance().doCreate(stuinfo);
-				} catch (Exception e) {
-					e.printStackTrace();
+			List<Integer> allSubjectid = null;
+			Iterator<Integer> iterSubid = null;
+			List<String> allSubjectName = new ArrayList<>();
+			try {
+				allSubjectid = DAOFactory.getICourseInfoDAOInstance().findById(
+						teacherid);
+				iterSubid = allSubjectid.iterator();
+				while (iterSubid.hasNext()) {
+					subject = DAOFactory.getISubjectInfoDAOInstance().findById(
+							iterSubid.next().intValue());
+					allSubjectName.add(subject.getSubjectname());
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+			request.getSession().setAttribute("allSubjectid", allSubjectid);
+			request.getSession().setAttribute("allSubjectName", allSubjectName);
 			RequestDispatcher rd = request.getRequestDispatcher("addclass.jsp");
 			rd.forward(request, response);
-		}else{
+		} else {
+			/**
+			 * 重复创建班级，跳转至错误界面
+			 */
 			RequestDispatcher rd = request.getRequestDispatcher("error.html");
 			rd.forward(request, response);
 		}

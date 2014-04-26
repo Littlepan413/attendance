@@ -48,6 +48,13 @@ body {
 
 </head>
 
+<script type="text/javascript">
+	function forword(id) {
+		var address = "/attendance/queryGroup?subjectid=" + id;
+		window.location.href = address;
+	}
+</script>
+
 <body>
 	<!-- topbar starts -->
 	<div class="navbar">
@@ -148,13 +155,12 @@ body {
 								Iterator<String> iterSubName = allSubjectName.iterator();
 								while (iterSubid.hasNext() && iterSubName.hasNext()) {
 									Integer subjectid = iterSubid.next();
-									out.println("<li><a class=\"ajax-link\" href=\"javascript:location.href='www.baidu.com?wd='+document.getElementById(\'"+subjectid.intValue()+"\').Value\"><i class=\"icon-calendar\"></i><span id=\""
+									out.println("<li id=\""
 											+ subjectid.intValue()
-											+ "\" class=\"hidden-tablet\" value=\""
+											+ "\"><a class=\"ajax-link\" onclick=forword("
 											+ subjectid.intValue()
-											+ "\">"
-											+ iterSubName.next()
-											+ "</span></a></li>");
+											+ ")><i class=\"icon-calendar\"></i><span class=\"hidden-tablet\">"
+											+ iterSubName.next() + "</span></a></li>");
 								}
 							}
 						%>
