@@ -197,11 +197,7 @@
 						</div>
 					</div>
 					<div class="box-content">
-                    	<form action="createClass2" name="NewClass" method="post" >
-                        	<p>班级名称</p>
-                            <input type="text" name="classname">
-                            <p>课程名称</p>
-                            <input type="text" name="subject">
+                    	<form action="import" name="NewClass" method="post" >
                           	<p>学生名单</p>
                             <textarea name="member" cols="12" rows="10" style="width:500px;"></textarea>
                             <br>

@@ -47,7 +47,7 @@ public class QueryGroupServlet extends HttpServlet {
 		Iterator<Integer> iterInt =null;
 		Iterator<GroupInfo> iterGroup = null;
 		/**
-		 * try块中获取了该教师对应课程下所有班级的名字和对应的ID
+		 * 获取该教师对应课程下所有班级的名字和对应的ID
 		 */
 		try {
 			allGroupid = DAOFactory.getICourseInfoDAOInstance().findAllGroup(
@@ -59,12 +59,10 @@ public class QueryGroupServlet extends HttpServlet {
 				iterGroup = oneGroup.iterator();
 				if(iterGroup.hasNext()){
 					groupName = iterGroup.next().getGroupname();
-					//System.out.println(groupName);
 					allGroupName.add(groupName);
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		/**

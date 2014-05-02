@@ -55,6 +55,16 @@
     <url-pattern>/createClass</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>add_class2</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.CreateClassServlet2
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>add_class2</servlet-name>
+    <url-pattern>/createClass2</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>download_subject</servlet-name>
     <servlet-class>
 			org.attendance.servlet.DownloadSubjectServlet
@@ -93,6 +103,26 @@
   <servlet-mapping>
     <servlet-name>query_subject</servlet-name>
     <url-pattern>/queryGroup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>importStuInfo</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.ImportStudentInfoServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>importStuInfo</servlet-name>
+    <url-pattern>/import</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>getClassList</servlet-name>
+    <servlet-class>
+			org.attendance.servlet.QueryClassListServlet
+		</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getClassList</servlet-name>
+    <url-pattern>/queryClassList</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>

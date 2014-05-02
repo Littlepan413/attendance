@@ -1,9 +1,11 @@
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 import cn.hyit.zyy.dao.factory.DAOFactory;
 import cn.hyit.zyy.vo.CourseInfo;
 import cn.hyit.zyy.vo.GroupInfo;
+import cn.hyit.zyy.vo.StudentInfo;
 
 public class TestDAOQuery {
 
@@ -14,13 +16,14 @@ public class TestDAOQuery {
 	 * @throws Exception
 	 */
 	public static void main(String[] args)throws Exception {
-		/*List<Integer> in = DAOFactory.getICourseInfoDAOInstance().findAllGroup(10086, 1000000004);
-		ListIterator<Integer> iter  = in.listIterator();
+		List<StudentInfo> allStudent = null;
+		StudentInfo stu = null;
+		allStudent = DAOFactory.getIStudentInfoDAOInstance().findByClass("м╗пе1121");
+		Iterator<StudentInfo> iter = allStudent.iterator();
 		while(iter.hasNext()){
-			Integer i = iter.next();
-			System.out.println(i.intValue());
-		}*/
-		DAOFactory.getICourseInfoDAOInstance().findAllGroup(1, 1);
+			stu = iter.next();
+			System.out.println(stu.getStudentid()+" "+stu.getName()+" "+stu.getClassname());
+		}
 	}
 
 }

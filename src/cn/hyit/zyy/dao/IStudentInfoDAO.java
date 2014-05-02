@@ -13,4 +13,6 @@ public interface IStudentInfoDAO {
 	public StudentInfo findById(int studentid) throws Exception;
 
 	public List<StudentInfo> findByClass(String classname) throws Exception;
+
+	public List<String> findClassName() throws Exception;
 }

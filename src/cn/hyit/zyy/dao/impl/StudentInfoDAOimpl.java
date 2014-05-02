@@ -83,7 +83,21 @@ public class StudentInfoDAOimpl implements IStudentInfoDAO {
 			student.setStudentid(rs.getInt(1));
 			student.setName(rs.getString(2));
 			student.setCardid(rs.getString(3));
+			student.setClassname(classname);
 			all.add(student);
+		}
+		this.pstmt.close();
+		return all;
+	}
+
+	@Override
+	public List<String> findClassName() throws Exception {
+		List<String> all = new ArrayList<>();
+		String sql = "SELECT DISTINCT classname FROM student_info;";
+		this.pstmt = this.conn.prepareStatement(sql);
+		ResultSet rs = this.pstmt.executeQuery();
+		while(rs.next()){
+			all.add(rs.getString(1));
 		}
 		this.pstmt.close();
 		return all;

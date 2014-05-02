@@ -71,4 +71,18 @@ public class StudentInfoDAOProxy implements IStudentInfoDAO {
 		return all;
 	}
 
+	@Override
+	public List<String> findClassName() throws Exception {
+		List<String> all = null;
+		try {
+			all = this.dao.findClassName();
+		} catch (Exception e) {
+			throw e;
+		}
+		finally{
+			this.dbc.close();
+		}
+		return all;
+	}
+
 }
