@@ -53,9 +53,7 @@ public class CreateClassServlet2 extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/**
-		 * 还有可能会出现一些特殊的字符，在处理前请先过滤，等待解决
-		 */
+
 		SubjectInfo subject = new SubjectInfo();
 		CourseInfo course = new CourseInfo();
 		GroupInfo group = new GroupInfo();
@@ -68,8 +66,14 @@ public class CreateClassServlet2 extends HttpServlet {
 					.findByName(classname);
 			subject = DAOFactory.getISubjectInfoDAOInstance().findByName(
 					subjectname);
+			if(subject==null){
+				flag = true;
+			}
 			Iterator<GroupInfo> iter = allgroup.iterator();
 			while (iter.hasNext()) {
+				if(flag){
+					break;
+				}
 				group = iter.next();
 				if (DAOFactory.getICourseInfoDAOInstance().findByClass(
 						subject.getSubjectid(), group.getGroupid())) {
@@ -136,7 +140,7 @@ public class CreateClassServlet2 extends HttpServlet {
 			}
 			request.getSession().setAttribute("allSubjectid", allSubjectid);
 			request.getSession().setAttribute("allSubjectName", allSubjectName);
-			RequestDispatcher rd = request.getRequestDispatcher("addclass.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("queryClassList");
 			rd.forward(request, response);
 		} else {
 			/**

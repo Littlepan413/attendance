@@ -148,7 +148,7 @@
 								}
 							}
 						%>
-						<li><a class="ajax-link" href="addclass.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
+						<li><a class="ajax-link" href="queryClassList"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
 						<!--
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
 						<li><a class="ajax-link" href="index.jsp"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
@@ -199,14 +199,39 @@
 					<div class="box-content">
                     	<form action="createClass2" name="NewClass" method="post" >
                         	<p>班级名称</p>
-                            <input type="text" name="classname">
+                            <!--input type="text" name="classname"-->
+                            <select size="1" name="classname">
+								<%
+									request.setCharacterEncoding("utf-8");
+									List<String> classlist = (List<String>)request.getAttribute("classlist");
+									if(classlist!=null){
+										Iterator<String> iter = classlist.iterator();
+										while(iter.hasNext()){
+											String classname = iter.next();
+								%>
+								<option value="<%=classname%>"><%=classname %></option>
+								<%
+										}
+									}
+								%>
+							</select>
                             <p>课程名称</p>
                             <input type="text" name="subject">
+                          	<!-- 
                           	<p>学生名单</p>
                             <textarea name="member" cols="12" rows="10" style="width:500px;"></textarea>
                             <br>
+                             -->
+                             <br>
                             <button onClick="return GetMember()">提交</button>
                             <button type="reset">重置</button>
+                            <br>
+                            <%
+                            	String info = request.getParameter("info");
+                            	if(info!=null){
+                            		out.println(info);
+                            	}
+                            %>
                         </form>
 					</div>
 				</div><!--/span-->

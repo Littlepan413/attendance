@@ -146,7 +146,7 @@
 								}
 							}
 						%>
-						<li><a class="ajax-link" href="addclass.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
+						<li><a class="ajax-link" href="queryClassList"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
 						
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>

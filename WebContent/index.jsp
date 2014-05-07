@@ -166,7 +166,7 @@ body {
 						%>
 						<!--li><a class="ajax-link" href="table.jsp"><i
 								class="icon-calendar"></i><span class="hidden-tablet">信号与系统</span></a></li-->
-						<li><a class="ajax-link" href="addclass.jsp"><i
+						<li><a class="ajax-link" href="queryClassList"><i
 								class="icon-align-justify"></i><span class="hidden-tablet">
 									新建班级</span></a></li>
 					</ul>

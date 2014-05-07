@@ -7,8 +7,8 @@
   <servlet>
     <servlet-name>commit</servlet-name>
     <servlet-class>
-			org.attendance.servletcommit.CommitServlet
-		</servlet-class>
+		org.attendance.servletcommit.CommitServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>commit</servlet-name>
@@ -17,8 +17,8 @@
   <servlet>
     <servlet-name>login</servlet-name>
     <servlet-class>
-			org.attendance.servlet.LoginServlet
-		</servlet-class>
+		org.attendance.servlet.LoginServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
@@ -27,8 +27,8 @@
   <servlet>
     <servlet-name>check</servlet-name>
     <servlet-class>
-			org.attendance.servlet.CheckLogin
-		</servlet-class>
+		org.attendance.servlet.CheckLogin
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>check</servlet-name>
@@ -37,8 +37,8 @@
   <servlet>
     <servlet-name>login_log</servlet-name>
     <servlet-class>
-			org.attendance.servlet.QueryLoginLogServlet
-		</servlet-class>
+		org.attendance.servlet.QueryLoginLogServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>login_log</servlet-name>
@@ -47,8 +47,8 @@
   <servlet>
     <servlet-name>add_class</servlet-name>
     <servlet-class>
-			org.attendance.servlet.CreateClassServlet
-		</servlet-class>
+		org.attendance.servlet.CreateClassServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>add_class</servlet-name>
@@ -57,8 +57,8 @@
   <servlet>
     <servlet-name>add_class2</servlet-name>
     <servlet-class>
-			org.attendance.servlet.CreateClassServlet2
-		</servlet-class>
+		org.attendance.servlet.CreateClassServlet2
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>add_class2</servlet-name>
@@ -67,8 +67,8 @@
   <servlet>
     <servlet-name>download_subject</servlet-name>
     <servlet-class>
-			org.attendance.servlet.DownloadSubjectServlet
-		</servlet-class>
+		org.attendance.servlet.DownloadSubjectServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>download_subject</servlet-name>
@@ -77,8 +77,8 @@
   <servlet>
     <servlet-name>download_group</servlet-name>
     <servlet-class>
-			org.attendance.servlet.DownloadGroupServlet
-		</servlet-class>
+		org.attendance.servlet.DownloadGroupServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>download_group</servlet-name>
@@ -87,8 +87,8 @@
   <servlet>
     <servlet-name>download_student</servlet-name>
     <servlet-class>
-			org.attendance.servlet.DownloadStudentServlet
-		</servlet-class>
+		org.attendance.servlet.DownloadStudentServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>download_student</servlet-name>
@@ -97,8 +97,8 @@
   <servlet>
     <servlet-name>query_subject</servlet-name>
     <servlet-class>
-			org.attendance.servlet.QueryGroupServlet
-		</servlet-class>
+		org.attendance.servlet.QueryGroupServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>query_subject</servlet-name>
@@ -107,8 +107,8 @@
   <servlet>
     <servlet-name>importStuInfo</servlet-name>
     <servlet-class>
-			org.attendance.servlet.ImportStudentInfoServlet
-		</servlet-class>
+		org.attendance.servlet.ImportStudentInfoServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>importStuInfo</servlet-name>
@@ -117,8 +117,8 @@
     <servlet>
     <servlet-name>getClassList</servlet-name>
     <servlet-class>
-			org.attendance.servlet.QueryClassListServlet
-		</servlet-class>
+		org.attendance.servlet.QueryClassListServlet
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>getClassList</servlet-name>

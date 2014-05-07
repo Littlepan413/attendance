@@ -2,7 +2,6 @@ package org.attendance.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -34,8 +33,8 @@ public class QueryClassListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+		String PATH = "addclass.jsp";
 		List<String> classList = null;
-		Iterator<String> iter = null;
 		PrintWriter out = null;
 		try {
 			classList = DAOFactory.getIStudentInfoDAOInstance().findClassName();
@@ -45,12 +44,10 @@ public class QueryClassListServlet extends HttpServlet {
 		}
 		out = response.getWriter();
 		if(classList!=null){
-			iter = classList.iterator();
-			while(iter.hasNext()){
-				out.println(iter.next());
-			}
+			request.setAttribute("classlist", classList);
+			request.getRequestDispatcher(PATH).forward(request, response);
 		}else{
-			out.println("Empty");
+			out.println("Error,管理员未添加学生名单，请联系管理员！");
 		}
 		out.close();
 	}
