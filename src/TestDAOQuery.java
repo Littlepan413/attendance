@@ -1,10 +1,6 @@
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
 import cn.hyit.zyy.dao.factory.DAOFactory;
-import cn.hyit.zyy.vo.CourseInfo;
-import cn.hyit.zyy.vo.GroupInfo;
 import cn.hyit.zyy.vo.StudentInfo;
 
 public class TestDAOQuery {

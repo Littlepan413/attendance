@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>学生考勤</title>
+	<title>欢迎使用</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -43,18 +43,16 @@
 
 	<!-- The fav icon -->
 	<link rel="shortcut icon" href="img/favicon.ico">
-    <script type="text/javascript">
-    	function GetMember(){
-			var text=document.NewClass.Member.value;	
-		}
-    </script>	
+		
 </head>
+
 <script type="text/javascript">
 	function forword(id) {
 		var address = "/attendance/queryGroup?subjectid=" + id;
 		window.location.href = address;
 	}
 </script>
+
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
@@ -149,16 +147,7 @@
 							}
 						%>
 						<li><a class="ajax-link" href="queryClassList"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
-						<!--
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
-						<li><a href="index.jsp"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
-						<li><a href="#"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="#"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
-						-->
-						<!--此处注释了部分的菜单，待修改！-->
+						
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
 				</div><!--/.well -->
@@ -186,10 +175,10 @@
 				</ul>
 			</div>
 			
-			<div class="row-fluid sortable">
+			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> </h2>
+						<h2><i class="icon-user"></i> 选择该班级的人员</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -197,45 +186,50 @@
 						</div>
 					</div>
 					<div class="box-content">
-                    	<form action="checkRepeat" name="NewClass" method="post" >
-                        	<p>班级名称</p>
-                            <!--input type="text" name="classname"-->
-                            <select size="1" name="classname">
-								<%
-									request.setCharacterEncoding("utf-8");
-									List<String> classlist = (List<String>)request.getAttribute("classlist");
-									if(classlist!=null){
-										Iterator<String> iter = classlist.iterator();
-										while(iter.hasNext()){
-											String classname = iter.next();
-								%>
-								<option value="<%=classname%>"><%=classname %></option>
-								<%
-										}
-									}
-								%>
-							</select>
-                            <p>课程名称</p>
-                            <input type="text" name="subject">
-                          	<!-- 
-                          	<p>学生名单</p>
-                            <textarea name="member" cols="12" rows="10" style="width:500px;"></textarea>
-                            <br>
-                             -->
-                             <br>
-                            <button onClick="return GetMember()">提交</button>
-                            <button type="reset">重置</button>
-                            <br>
-                            <%
-                            	String info = request.getParameter("info");
-                            	if(info!=null){
-                            		out.println(info);
-                            	}
-                            %>
-                        </form>
+						<form action="createClass2" name="NewClass" method="post" >
+						<%
+							request.setCharacterEncoding("utf-8");
+							List all = (List) request.getAttribute("allStudent");
+							if(all!=null){
+						%>
+							<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						 	 <thead>
+							 	 <tr>
+								 	 <th>学号</th>
+									  <th>姓名</th>
+									  <th>班级</th>
+									  <th>操作</th>
+								  </tr>
+							  </thead>   
+							  <tbody>
+						<%
+								Iterator iter = all.iterator();
+								while(iter.hasNext()){
+									pageContext.setAttribute("student", iter.next());
+						%>
+								<tr>
+									<td>${student.studentid }</td>
+									<td class="center">${student.name }</td>
+									<td class="center">${student.classname }</td>
+									<td class="center">
+										<a class="btn btn-danger" href="#">
+											<i class="icon-trash icon-white"></i> 
+											删除
+										</a>
+									</td>
+								</tr>
+						<%
+								}
+							}
+						%>
+							  </tbody>
+					 	 </table>
+					 	 <br>
+					 	 <button class="btn btn-small btn-primary">提交</button>
+					  </form>        
 					</div>
 				</div><!--/span-->
-
+			
 			</div><!--/row-->
 			
 			<!-- content ends -->
@@ -247,21 +241,21 @@
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
+				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
-				<p>Here settings can be configured...</p>
+				<p>还在建设中........</p>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
+				<a href="#" class="btn" data-dismiss="modal">关闭</a>
+				<a href="#" class="btn btn-primary">保存更改</a>
 			</div>
 		</div>
 	
-<!--		<footer>
+		<footer>
 			<p class="pull-left">&copy; <a href="#" target="_blank">Muhammad Usman</a> 2014</p>
 			<p class="pull-right">Powered by: <a href="#">Akichan</a></p>
-		</footer>-->
+		</footer>
 		
 	</div><!--/.fluid-container-->
 

@@ -114,7 +114,7 @@
     <servlet-name>importStuInfo</servlet-name>
     <url-pattern>/import</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>getClassList</servlet-name>
     <servlet-class>
 		org.attendance.servlet.QueryClassListServlet
@@ -123,6 +123,16 @@
   <servlet-mapping>
     <servlet-name>getClassList</servlet-name>
     <url-pattern>/queryClassList</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>check_repeat</servlet-name>
+    <servlet-class>
+		org.attendance.servlet.CheckRepeatServlet
+	</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>check_repeat</servlet-name>
+    <url-pattern>/checkRepeat</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
