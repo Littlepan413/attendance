@@ -18,7 +18,14 @@
 	  .sidebar-nav {
 		padding: 9px 0;
 	  }
+	  tr td input{
+	  	border: 0px solid #FFFFFF;
+	  	width: 100px;height: 20px;
+		background: #FFFFFF;
+		background-color: #FFFFFF;										 
+	  }
 	</style>
+
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="css/charisma-app.css" rel="stylesheet">
 	<link href="css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
@@ -50,6 +57,11 @@
 	function forword(id) {
 		var address = "/attendance/queryGroup?subjectid=" + id;
 		window.location.href = address;
+	}
+	function deleteCurrentRow(obj){
+	var tr=obj.parentNode.parentNode;
+	var tbody=tr.parentNode;
+	tbody.removeChild(tr);
 	}
 </script>
 
@@ -186,18 +198,20 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form action="createClass2" name="NewClass" method="post" >
+						<form action="createClass" name="NewClass" method="post" >
 						<%
 							request.setCharacterEncoding("utf-8");
+							String subjectname = (String)request.getAttribute("subject");
 							List all = (List) request.getAttribute("allStudent");
 							if(all!=null){
 						%>
-							<table class="table table-striped table-bordered bootstrap-datatable datatable">
+							<table class="table">
 						 	 <thead>
 							 	 <tr>
 								 	 <th>学号</th>
 									  <th>姓名</th>
 									  <th>班级</th>
+									  <th>课程</th>
 									  <th>操作</th>
 								  </tr>
 							  </thead>   
@@ -208,11 +222,21 @@
 									pageContext.setAttribute("student", iter.next());
 						%>
 								<tr>
-									<td>${student.studentid }</td>
-									<td class="center">${student.name }</td>
-									<td class="center">${student.classname }</td>
+									<td>
+										<input name="studentid" readonly="readonly" type="text" value="${student.studentid }" />
+										
+									</td>
 									<td class="center">
-										<a class="btn btn-danger" href="#">
+										<input name="studentname" readonly="readonly" type="text" value="${student.name }" />
+									</td>
+									<td class="center">
+										<input name="classname" readonly="readonly"  type="text" value="${student.classname }" />
+									</td>
+									<td class="center">
+										<input name="subject" readonly="readonly"  type="text" value="<%=subjectname %>" />
+									</td>
+									<td class="center">
+										<a class="btn btn-danger" onclick="deleteCurrentRow(this)">
 											<i class="icon-trash icon-white"></i> 
 											删除
 										</a>

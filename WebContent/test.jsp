@@ -6,8 +6,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%request.setCharacterEncoding("utf-8"); %>
-<%=request.getParameter("classname") %><br>
-<%=request.getParameter("subject") %>
+<%	
+	request.setCharacterEncoding("utf-8");
+	String []studentid;
+	String []studentname;
+	String studentclass;
+    studentid=request.getParameterValues("studentid");
+    studentname=request.getParameterValues("studentname");
+    studentclass=request.getParameterValues("studentclass")[0];
+    for(String sid:studentid){
+    	out.println(sid);
+    }
+    for(String sname:studentname){
+    	out.println(sname);
+    }
+    out.println(studentclass);
+     %>
 </body>
 </html>

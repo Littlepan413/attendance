@@ -149,15 +149,6 @@
 							}
 						%>
 						<li><a class="ajax-link" href="queryClassList"><i class="icon-align-justify"></i><span class="hidden-tablet"> 新建班级</span></a></li>
-						<!--
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
-						<li><a href="index.jsp"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
-						<li><a class="ajax-link" href="index.jsp"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
-						<li><a href="#"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="#"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
-						-->
 						<!--此处注释了部分的菜单，待修改！-->
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
