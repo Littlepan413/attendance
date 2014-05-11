@@ -59,9 +59,12 @@
 		window.location.href = address;
 	}
 	function deleteCurrentRow(obj){
-	var tr=obj.parentNode.parentNode;
-	var tbody=tr.parentNode;
-	tbody.removeChild(tr);
+		if(confirm("你确定删除吗？")){
+			var tr=obj.parentNode.parentNode;
+			var tbody=tr.parentNode;
+			tbody.removeChild(tr);
+		}
+		
 	}
 </script>
 

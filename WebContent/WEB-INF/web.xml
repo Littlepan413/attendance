@@ -124,7 +124,7 @@
     <servlet-name>getClassList</servlet-name>
     <url-pattern>/queryClassList</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>check_repeat</servlet-name>
     <servlet-class>
 		org.attendance.servlet.CheckRepeatServlet
@@ -133,6 +133,16 @@
   <servlet-mapping>
     <servlet-name>check_repeat</servlet-name>
     <url-pattern>/checkRepeat</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>query_student</servlet-name>
+    <servlet-class>
+		org.attendance.servlet.QueryStudentServlet
+	</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>query_student</servlet-name>
+    <url-pattern>/queryStudent</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>

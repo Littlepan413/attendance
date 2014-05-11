@@ -1,3 +1,5 @@
+<%@page import="cn.hyit.zyy.vo.StudentInfo"%>
+<%@page import="cn.hyit.zyy.vo.GroupInfo"%>
 <%@page contentType="text/html; charset=utf-8" %>
 <%@page import="java.util.*" %>
 <!DOCTYPE html>
@@ -201,11 +203,23 @@
 							  </tr>
 						  </thead>   
 						  <tbody>
+						  <%
+							  	request.setCharacterEncoding("utf-8");
+						  		List<StudentInfo> allStudent = (List<StudentInfo>)request.
+						  				getAttribute("allStudent");
+						  		if(allStudent!=null){
+						  %>
+						  <%
+						  			Iterator<StudentInfo> iter = allStudent.iterator();
+						  			while(iter.hasNext()){
+						  				pageContext.setAttribute("student", iter.next());
+						  %>
 							<tr>
-								<td>1121302135</td>
-								<td class="center">张宇洋</td>
+								<td>${student.studentid }</td>
+								<td class="center">${student.name }</td>
 								<td class="center">签到</td>
 								<td class="center">2014/03/28</td>
+								
 								<td class="center">19:08</td>
 								<td class="center">1</td>
 								<td class="center">0</td>
@@ -214,6 +228,11 @@
 									<span class="label label-success">正常</span>
 								</td>
 							</tr>
+							<%
+						  
+						  			}
+						  		}
+						  %>
 						  </tbody>
 					  </table>            
 					</div>

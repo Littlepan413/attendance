@@ -71,7 +71,7 @@ public class QueryGroupServlet extends HttpServlet {
 		 */
 		request.setAttribute("allGroupid", allGroupid);
 		request.setAttribute("allGroupName", allGroupName);
-		RequestDispatcher rd = request.getRequestDispatcher("table.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("queryStudent");
 		rd.forward(request, response);
 	}
 

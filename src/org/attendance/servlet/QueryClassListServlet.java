@@ -39,7 +39,6 @@ public class QueryClassListServlet extends HttpServlet {
 		try {
 			classList = DAOFactory.getIStudentInfoDAOInstance().findClassName();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		out = response.getWriter();
